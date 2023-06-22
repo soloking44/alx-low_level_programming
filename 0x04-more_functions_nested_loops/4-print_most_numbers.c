@@ -3,7 +3,7 @@
 /**
 * print_most_numbers - it is a function that prints the numbers, starting from 0 to 9
 * followed by a new line.
-* it will not print 2 and 4
+* do not print 2 and 4
 */
 
 void print_most_numbers(void)
