@@ -2,7 +2,7 @@
 
 /**
  * wildcmp - it compares two strings.
- * @s1: string 1. a pointer to string params
+ * @s1: string 1. it can replace any string
  * @s2: string 2. It can contains a * as a special character.
  * Return: 1 if are identical, 0 if not.
  */
