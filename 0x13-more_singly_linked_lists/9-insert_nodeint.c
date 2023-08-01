@@ -41,7 +41,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		for (nodes = 0; nodes < (idx - 1); nodes++)
 			node_index = node_index->next;
 		for (nodes = 0; nodes < idx; nodes++)
-			node_after = node_after->next;
+			node_after = node_index->next;
 		node_index->next = new_node;
 		new_node->next = node_after;
 		return (new_node);
