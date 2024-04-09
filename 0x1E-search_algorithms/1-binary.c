@@ -1,30 +1,59 @@
 #include "search_algos.h"
 
 /**
-  * linear_search - Checks for a value in an array
-  *                 of integers used linear search.
-  * @array: A reference to the new element of an array to check.
-  * @size: The value of elements within an array.
-  * @value: The value to check for.
-  *
-  * Return: If the value is not present or the array is NULL, -1.
-  *         else, the first index where the value is located.
-  *
-  * Description: Shows the value eche time is compared within array.
-  */
-int linear_search(int *array, size_t size, int value)
+ * recursive_search - Recursively searches for a value within an integer array
+ * @array: Pointer to the first element of the array
+ * @size: Number of elements in the array
+ * @value: Value to search for
+ *
+ * Return: Index of the value if found, otherwise -1
+ */
+int recursive_search(int *array, size_t size, int value)
 {
+	size_t half = size / 2;
 	size_t k;
 
-	if (array == NULL)
+	if (array == NULL || size == 0)
 		return (-1);
 
-	for (k = 0; k < size; k++)
-	{
-		printf("Value checked array[%ld] = [%d]\n", k, array[k]);
-		if (array[i] == value)
-			return (k);
-	}
+	printf("Searching in array:");
 
-	return (-1);
+	for (k = 0; k < size; k++)
+		printf("%s %d", (k == 0) ? "" : ",", array[k]);
+
+	printf("\n");
+
+	if (half && size % 2 == 0)
+		half--;
+
+	if (value == array[half])
+		return ((int) half);
+
+	if (value < array[half])
+		return (recursive_search(array, half, value));
+
+	half++;
+
+	return (recursive_search(array + half, size - half, value) + half);
 }
+
+/**
+ * binary_search - Searches for a value in a sorted array of integers
+ * @array: Pointer to the first element of the array
+ * @size: Number of elements in the array
+ * @value: Value to search for
+ *
+ * Return: Index of the value if found, otherwise -1
+ */
+int binary_search(int *array, size_t size, int value)
+{
+	int index;
+
+	index = recursive_search(array, size, value);
+
+	if (index >= 0 && array[index] != value)
+		return (-1);
+
+	return (index);
+}
+
